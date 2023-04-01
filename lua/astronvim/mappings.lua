@@ -14,6 +14,7 @@ local sections = {
   g = { name = " Git" },
   S = { name = "󱂬 Session" },
   t = { name = " Terminal" },
+  r = { name = " RustTools"},
 }
 if not vim.g.icons_enabled then vim.tbl_map(function(opts) opts.name = opts.name:gsub("^.* ", "") end, sections) end
 
@@ -299,8 +300,8 @@ if is_available "toggleterm.nvim" then
   maps.n["<leader>tf"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm float" }
   maps.n["<leader>th"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" }
   maps.n["<leader>tv"] = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "ToggleTerm vertical split" }
-  maps.n["<F7>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
-  maps.t["<F7>"] = maps.n["<F7>"]
+  maps.n["<C-t>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
+  maps.t["<C-t>"] = maps.n["<C-t>"]
   maps.n["<C-'>"] = maps.n["<F7>"]
   maps.t["<C-'>"] = maps.n["<F7>"]
 end
@@ -379,6 +380,9 @@ maps.n["<leader>ut"] = { ui.toggle_tabline, desc = "Toggle tabline" }
 maps.n["<leader>uu"] = { ui.toggle_url_match, desc = "Toggle URL highlight" }
 maps.n["<leader>uw"] = { ui.toggle_wrap, desc = "Toggle wrap" }
 maps.n["<leader>uy"] = { ui.toggle_syntax, desc = "Toggle syntax highlight" }
+
+-- Rust tools
+maps.n["<leader>r"] = sections.r
 
 utils.set_mappings(astronvim.user_opts("mappings", maps))
 
