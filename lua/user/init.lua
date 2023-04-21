@@ -1,6 +1,19 @@
 return {
   colorscheme = "catppuccin",
   lsp = {
+    servers = {
+      "solidity"
+    },
+    config = {
+      solidity = function()
+        return {
+          cmd = { 'nomicfoundation-solidity-language-server', '--stdio' },
+          filetypes = { 'solidity' },
+          single_file_support = true,
+          root_dir = require("lspconfig.util").root_pattern("hardhat.config.js", "hardhat.config.ts");
+        }
+      end,
+    },
     setup_handlers = {
       -- add custom handler
       rust_analyzer = function(_, opts) 
